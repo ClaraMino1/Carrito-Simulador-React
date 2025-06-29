@@ -1,9 +1,17 @@
 import { Input, List } from 'antd';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const { Search } = Input;
 
 const SearcherBar = ({books}) => {
+  const navigate = useNavigate();
+
+const handleSearch = () => {
+  if (filteredBooks.length > 0) {
+    navigate(`/BookDetails/${filteredBooks[0].id}`);
+  }
+};
     //query = lo que el usuario escribe
   const [query, setQuery] = useState('');//inicialmente no hay busqueda 
   
@@ -18,7 +26,7 @@ const SearcherBar = ({books}) => {
         placeholder="Buscar libro"
         enterButton="Buscar"
         size="large"
-        // onSearch={(value) => setQuery(value)} =>se ejecuta cuando el usuario presiona Enter o el botón
+        onSearch={handleSearch}//cuando el usuario presiona Enter o el botón
         onChange={(e) => setQuery(e.target.value)} //se ejecuta en cada tecla presionada => actualiza query (genera el efecto de busqueda en tiempo real).
         style={{ marginBottom: 20 }}
       />
