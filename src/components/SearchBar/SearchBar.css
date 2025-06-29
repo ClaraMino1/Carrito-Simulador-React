@@ -1,0 +1,7 @@
+.item-filter{
+    cursor: pointer;
+}
+
+.item-filter:hover{
+    color: #1677ff;
+}
