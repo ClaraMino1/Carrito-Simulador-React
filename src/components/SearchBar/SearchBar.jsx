@@ -6,7 +6,7 @@ import './SearchBar.css';
 
 const { Search } = Input;
 
-const SearcherBar = ({books}) => {
+const SearcherBar = ({ books, onAddToCart }) => {
   const navigate = useNavigate();
 
   const handleSearch = () => { //se llama al apretar enter o presionar el boton buscar
@@ -49,16 +49,23 @@ const SearcherBar = ({books}) => {
           renderItem={(item) => {
             return(
               <List.Item
-                actions={[<Button key="list-loadmore-edit" color="primary" variant="filled"><ShoppingCartOutlined />Añadir al carrito</Button>]}
-                
+                actions={[  <Button 
+                            key="list-loadmore-edit" 
+                            color="primary" 
+                            variant="filled" 
+                            onClick={(e) => {
+                              e.stopPropagation(); //cuando se hace click en el boton añadir al carrito desde el buscador, llama a la funcion addToCart y detiene el evento para que no redireccione
+                              onAddToCart();}}>
+                            <ShoppingCartOutlined />Añadir al carrito</Button>]}
+
                 className='item-filter'
                 onClick={() => handleSelect(item.id)}>
 
-              <List.Item.Meta
-                avatar={<img src={item.image} alt={item.title} style={{ width: 50, height: 50, objectFit: "contain" }} />}
-                title={item.title}
-                description={item.author}
-              />
+                <List.Item.Meta
+                  avatar={<img src={item.image} alt={item.title} style={{ width: 50, height: 50, objectFit: "contain" }} />}
+                  title={item.title}
+                  description={item.author}
+                />
               </List.Item>
             )}}
         />

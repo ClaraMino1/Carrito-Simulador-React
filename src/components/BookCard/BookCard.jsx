@@ -2,7 +2,8 @@ import { Card,Button} from 'antd';
 import './BookCard.css';
 import { ShoppingCartOutlined } from '@ant-design/icons';
 
-function BookCard({title,author,image,price}){
+function BookCard({title,author,image,price,onAddToCart }){
+
     return(
    <Card
         hoverable
@@ -15,7 +16,7 @@ function BookCard({title,author,image,price}){
             <p>${price}</p>
         </div>
 
-        <Button type="primary"><ShoppingCartOutlined />Añadir al carrito</Button>
+        <Button type="primary" onClick={onAddToCart}><ShoppingCartOutlined />Añadir al carrito</Button>
     </Card>
     );
 }
