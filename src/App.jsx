@@ -7,7 +7,7 @@ import HomePage from './pages/HomePage/HomePage';
 function App() {
   return (
     
-    <BrowserRouter>
+    <BrowserRouter basename="/Carrito-Simulador-React">
       
       <Routes>
         <Route path="/" element={<HomePage />} />
