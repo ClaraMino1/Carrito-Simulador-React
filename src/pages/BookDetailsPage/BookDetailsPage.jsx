@@ -5,7 +5,6 @@ export function BookDetailsPage() {
   const { id } = useParams();
   const bookId = parseInt(id); // convierte a int para poder compararlo con los id numéricos del array books
 
-
   const book = books.find((book) => book.id === bookId); //encuentra el libro que tenga el id que se pasa por ruta
 
   if (!book) {
@@ -14,7 +13,7 @@ export function BookDetailsPage() {
 
   return (
    <>
-    <p>detalle del libro con id {book.id}</p>
+        <p>detalle del libro con id {book.id}</p>
     </>
 
   );

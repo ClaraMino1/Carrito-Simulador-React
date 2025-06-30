@@ -3,5 +3,12 @@
 }
 
 .item-filter:hover{
-    color: #1677ff;
+    background-color: #f0f5ff;
+    transition: all 0.2s ease-in-out;
 }
+
+.item-filter:hover .ant-list-item-meta-title {
+  color: #1677ff !important;
+}
+
+

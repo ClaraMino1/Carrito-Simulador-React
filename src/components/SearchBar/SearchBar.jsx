@@ -1,4 +1,4 @@
-import { Input, List } from 'antd';
+import { Avatar, Input, List } from 'antd';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './SearchBar.css';
@@ -13,6 +13,7 @@ const SearcherBar = ({books}) => {
       navigate(`/BookDetails/${filteredBooks[0].id}`);
     }
   };
+
 
   const handleSelect = (bookId) => {//se llama cuando se hace click en un item de la lista de items que coinciden con la busqueda
     navigate(`/BookDetails/${bookId}`);
@@ -49,7 +50,12 @@ const SearcherBar = ({books}) => {
               <List.Item
                 className='item-filter'
                 onClick={() => handleSelect(item.id)}>
-                  {item.title}
+
+              <List.Item.Meta
+                avatar={<img src={item.image} alt={item.title} style={{ width: 50, height: 50, objectFit: "contain" }} />}
+                title={item.title}
+                description={item.author}
+              />
               </List.Item>
             )}}
         />
@@ -59,3 +65,4 @@ const SearcherBar = ({books}) => {
 };
 
 export default SearcherBar;
+
