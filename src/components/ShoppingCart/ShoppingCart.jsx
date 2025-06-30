@@ -2,11 +2,7 @@ import { Card } from "antd";
 import { DeleteOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import './ShoppingCart.css';
 
-function ShoppingCart({ cartItems }) {
-  
-  const handleClearCart = () => {
-    console.log("Vaciar carrito — lógica pendiente");
-  };
+function ShoppingCart({ cartItems, handleClearCart}) {
 
   // Calcular el total
   const total = cartItems.reduce((acc, item) => acc + item.price, 0);
@@ -20,8 +16,8 @@ function ShoppingCart({ cartItems }) {
         </span>
       }
       extra={
-        <span className="delete-icon" onClick={handleClearCart}>
-          <DeleteOutlined style={{ cursor: "pointer" }} />
+        <span className="delete-icon" >
+          <DeleteOutlined onClick={handleClearCart} style={{ cursor: "pointer" }} />
         </span>
       }
       style={{ width: 300 }}

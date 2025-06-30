@@ -15,6 +15,10 @@ function HomePage() {
         //prevItems = el carrito antes de agregar un item nuevo
         setCartItems((prevItems) => [...prevItems, item]); //crea una nueva copia del array agregando item al final
     };  
+    //funcion para limpiar todo el carrito
+    const handleClearCart = () => {
+        setCartItems([])
+    };
 
     return(
         <div  style={{ padding: 20 }}>
@@ -22,7 +26,7 @@ function HomePage() {
 
             {/* la searcherBar recibe la simulacion de api como parametro para buscar */}
             <SearcherBar books={books} onAddToCart={addToCart}/>
-            <ShoppingCart cartItems={cartItems}/>
+            <ShoppingCart cartItems={cartItems} handleClearCart={handleClearCart}/>
 
             <Row gutter={[16, 16]} style={{ marginBottom: 24 }}>
 
