@@ -7,6 +7,7 @@ import './SearchBar.css';
 const { Search } = Input;
 
 const SearcherBar = ({ books, onAddToCart }) => {
+
   const navigate = useNavigate();
 
   const handleSearch = () => { //se llama al apretar enter o presionar el boton buscar
@@ -15,12 +16,10 @@ const SearcherBar = ({ books, onAddToCart }) => {
     }
   };
 
-
   const handleSelect = (bookId) => {//se llama cuando se hace click en un item de la lista de items que coinciden con la busqueda
     navigate(`/BookDetails/${bookId}`);
     setQuery("");// Limpia el input
   };
-
 
   //query = lo que el usuario escribe
   const [query, setQuery] = useState('');//inicialmente no hay busqueda 
@@ -55,7 +54,7 @@ const SearcherBar = ({ books, onAddToCart }) => {
                             variant="filled" 
                             onClick={(e) => {
                               e.stopPropagation(); //cuando se hace click en el boton añadir al carrito desde el buscador, llama a la funcion addToCart y detiene el evento para que no redireccione
-                              onAddToCart();}}>
+                              onAddToCart(item);}}>
                             <ShoppingCartOutlined />Añadir al carrito</Button>]}
 
                 className='item-filter'
