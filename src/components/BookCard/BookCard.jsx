@@ -1,5 +1,6 @@
 import { Card,Button} from 'antd';
 import './BookCard.css';
+import { ShoppingCartOutlined } from '@ant-design/icons';
 
 function BookCard({title,author,image,price}){
     return(
@@ -14,7 +15,7 @@ function BookCard({title,author,image,price}){
             <p>${price}</p>
         </div>
 
-        <Button type="primary">Añadir al carrito</Button>
+        <Button type="primary"><ShoppingCartOutlined />Añadir al carrito</Button>
     </Card>
     );
 }

@@ -1,6 +1,7 @@
-import { Avatar, Input, List } from 'antd';
+import { Button, Input, List } from 'antd';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ShoppingCartOutlined } from '@ant-design/icons';
 import './SearchBar.css';
 
 const { Search } = Input;
@@ -48,6 +49,8 @@ const SearcherBar = ({books}) => {
           renderItem={(item) => {
             return(
               <List.Item
+                actions={[<Button key="list-loadmore-edit" color="primary" variant="filled"><ShoppingCartOutlined />Añadir al carrito</Button>]}
+                
                 className='item-filter'
                 onClick={() => handleSelect(item.id)}>
 
