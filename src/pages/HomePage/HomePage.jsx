@@ -20,13 +20,13 @@ function HomePage() {
         setCartItems([])
     };
 
-    //funcion para borrar solo el último item del carrito
-    const handleClearItemCart = () => {
-
-        setCartItems((prevItems) => {
-            return prevItems.slice(0, -1); // elimina el último
-         });
+    //funcion para borrar solo un item del carrito
+    const handleClearItemCart = (itemToRemove) => {
+        setCartItems(prevItems =>
+            prevItems.filter(item => item.id !== itemToRemove.id)
+        );
     };
+
 
     return(
         <div  style={{ padding: 20 }}>

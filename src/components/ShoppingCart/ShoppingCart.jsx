@@ -34,7 +34,7 @@ function ShoppingCart({ cartItems, handleClearCart,handleClearItemCart}) {
                 currency: "ARS",
             })}
             <span className="delete-icon">
-                <DeleteOutlined onClick={handleClearItemCart}/>
+                <DeleteOutlined onClick={() => handleClearItemCart(item)} />
             </span>
             </p>
           ))}
