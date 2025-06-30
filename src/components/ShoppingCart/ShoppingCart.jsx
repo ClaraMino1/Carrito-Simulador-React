@@ -5,7 +5,7 @@ import './ShoppingCart.css';
 function ShoppingCart({ cartItems, handleClearCart,handleClearItemCart}) {
 
   // Calcular el total
-  const total = cartItems.reduce((acc, item) => acc + item.price, 0);
+  const total = cartItems.reduce((acc, cartItem) => acc + (cartItem.item.price * cartItem.quantity), 0);
 
   return (
     <Card
@@ -26,19 +26,21 @@ function ShoppingCart({ cartItems, handleClearCart,handleClearItemCart}) {
         <p>Tu carrito está vacío</p>
       ) : (
         <>
-          {cartItems.map((item, index) => ( //si el carrito no está vacio itera los items y muestra el titulo y precio
-            <p key={index}>
-            {item.title} —{" "}
-            {item.price.toLocaleString("es-AR", {
+          {/* //se itera cada item del carrito */}
+          {cartItems.map((cartItem) => (
+            <p key={cartItem.item.id}>
+              {cartItem.item.title} ({cartItem.quantity}) —{" "} 
+              {(cartItem.item.price * cartItem.quantity).toLocaleString("es-AR", {
                 style: "currency",
                 currency: "ARS",
-            })}
+              })}
             <span className="delete-icon">
-                <DeleteOutlined onClick={() => handleClearItemCart(item)} />
+                                                {/* se le pasa el id del item a borrar */}
+                <DeleteOutlined onClick={() => handleClearItemCart(cartItem.item.id)} />
             </span>
             </p>
           ))}
-          {/* //divide los items del total */}
+          {/* //separador de los items y del total */}
           <hr /> 
           <p>
             <strong>Total:</strong>{" "}
