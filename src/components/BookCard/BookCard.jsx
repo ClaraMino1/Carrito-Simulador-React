@@ -27,4 +27,3 @@ function BookCard({title,author,image,price,onAddToCart }){
 }
 export default BookCard;
 
-
