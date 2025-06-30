@@ -13,7 +13,11 @@ function BookCard({title,author,image,price,onAddToCart }){
         <div style={{ marginBottom: 16 }}>
             <h3>{title}</h3>
             <p>{author}</p>
-            <p>${price}</p>
+            <p>{price.toLocaleString("es-AR", {
+                style: "currency",
+                currency: "ARS",
+                minimumFractionDigits: 3, // Asegura al menos 3 decimales
+              })}</p>
             
         </div>
         {/* usa la funcion addToCart al hacer click en el boton */}

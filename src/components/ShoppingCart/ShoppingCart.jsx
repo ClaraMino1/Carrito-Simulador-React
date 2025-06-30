@@ -33,6 +33,7 @@ function ShoppingCart({ cartItems, handleClearCart,handleClearItemCart}) {
               {(cartItem.item.price * cartItem.quantity).toLocaleString("es-AR", {
                 style: "currency",
                 currency: "ARS",
+                minimumFractionDigits: 3, // Asegura al menos 3 decimales
               })}
             <span className="delete-icon">
                                                 {/* se le pasa el id del item a borrar */}
@@ -47,6 +48,7 @@ function ShoppingCart({ cartItems, handleClearCart,handleClearItemCart}) {
             {total.toLocaleString("es-AR", {
               style: "currency",
               currency: "ARS",
+              minimumFractionDigits: 3, // Asegura al menos 3 decimales
             })}
           </p>
         </>
