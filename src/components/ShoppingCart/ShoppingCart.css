@@ -1,0 +1,11 @@
+.delete-icon{
+    padding: 10px;
+    border-radius: 7px;
+}
+
+.delete-icon:hover{
+    cursor: pointer;
+    color: #d54244;
+    transition: all 0.2s ease-in-out;
+    background-color: #fff0f0;
+}
