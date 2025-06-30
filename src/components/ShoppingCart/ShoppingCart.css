@@ -1,11 +1,21 @@
-.delete-icon{
+.deleteAll-icon{
     padding: 10px;
     border-radius: 7px;
+}
+
+.deleteAll-icon:hover{
+    cursor: pointer;
+    color: #d54244;
+    transition: all 0.2s ease-in-out;
+    background-color: #fff0f0;
+}
+
+.delete-icon{
+    margin-left: 10px;
 }
 
 .delete-icon:hover{
     cursor: pointer;
     color: #d54244;
     transition: all 0.2s ease-in-out;
-    background-color: #fff0f0;
 }

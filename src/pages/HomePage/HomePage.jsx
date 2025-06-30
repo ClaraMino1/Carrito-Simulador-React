@@ -11,13 +11,21 @@ function HomePage() {
 
     //función para agregar un item al carrito
     const addToCart = (item) => {
-
         //prevItems = el carrito antes de agregar un item nuevo
         setCartItems((prevItems) => [...prevItems, item]); //crea una nueva copia del array agregando item al final
     };  
+
     //funcion para limpiar todo el carrito
     const handleClearCart = () => {
         setCartItems([])
+    };
+
+    //funcion para borrar solo el último item del carrito
+    const handleClearItemCart = () => {
+
+        setCartItems((prevItems) => {
+            return prevItems.slice(0, -1); // elimina el último
+         });
     };
 
     return(
@@ -26,7 +34,7 @@ function HomePage() {
 
             {/* la searcherBar recibe la simulacion de api como parametro para buscar */}
             <SearcherBar books={books} onAddToCart={addToCart}/>
-            <ShoppingCart cartItems={cartItems} handleClearCart={handleClearCart}/>
+            <ShoppingCart cartItems={cartItems} handleClearCart={handleClearCart} handleClearItemCart={handleClearItemCart}/>
 
             <Row gutter={[16, 16]} style={{ marginBottom: 24 }}>
 

@@ -2,7 +2,7 @@ import { Card } from "antd";
 import { DeleteOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import './ShoppingCart.css';
 
-function ShoppingCart({ cartItems, handleClearCart}) {
+function ShoppingCart({ cartItems, handleClearCart,handleClearItemCart}) {
 
   // Calcular el total
   const total = cartItems.reduce((acc, item) => acc + item.price, 0);
@@ -16,8 +16,8 @@ function ShoppingCart({ cartItems, handleClearCart}) {
         </span>
       }
       extra={
-        <span className="delete-icon" >
-          <DeleteOutlined onClick={handleClearCart} style={{ cursor: "pointer" }} />
+        <span className="deleteAll-icon">
+          <DeleteOutlined onClick={handleClearCart} />
         </span>
       }
       style={{ width: 300 }}
@@ -28,11 +28,14 @@ function ShoppingCart({ cartItems, handleClearCart}) {
         <>
           {cartItems.map((item, index) => ( //si el carrito no está vacio itera los items y muestra el titulo y precio
             <p key={index}>
-              {item.title} —{" "}
-              {item.price.toLocaleString("es-AR", {
+            {item.title} —{" "}
+            {item.price.toLocaleString("es-AR", {
                 style: "currency",
                 currency: "ARS",
-              })}
+            })}
+            <span className="delete-icon">
+                <DeleteOutlined onClick={handleClearItemCart}/>
+            </span>
             </p>
           ))}
           {/* //divide los items del total */}

@@ -14,6 +14,7 @@ function BookCard({title,author,image,price,onAddToCart }){
             <h3>{title}</h3>
             <p>{author}</p>
             <p>${price}</p>
+            
         </div>
         {/* usa la funcion addToCart al hacer click en el boton */}
         <Button type="primary" onClick={onAddToCart}><ShoppingCartOutlined />Añadir al carrito</Button>
