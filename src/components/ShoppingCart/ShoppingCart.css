@@ -33,12 +33,14 @@
     align-items: center;
     justify-content: space-evenly;
     width: 100%;
+   
 }
 
 .header-cart-content span{
     display: flex;
     align-items: center;
     color: #fff;
+   
 }
 
 .panel-container-cart{

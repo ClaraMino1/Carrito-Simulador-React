@@ -24,9 +24,12 @@ const SearcherBar = ({ products, onAddToCart }) => {
   //query = lo que el usuario escribe
   const [query, setQuery] = useState('');//inicialmente no hay busqueda 
     
-  const filteredProducts = products.filter((product) => //devuelve un array con los productos filtrados 
-    product.title.toLowerCase().includes(query.toLowerCase())
-    //por cada producto agarra el titulo y busca si la query que se ingresa en la searchbar coincide
+  //filtrado de productos por searchbar
+  const filteredProducts = products.filter((product) =>{ 
+    const titleMatches = product.title.toLowerCase().includes(query.toLowerCase())    //por cada producto agarra el titulo y busca si la query que se ingresa en la searchbar coincide. devuelve un booleano
+    const categoryMatches  = product.category.toLowerCase().includes(query.toLowerCase()) //por cada producto agarra la categoria y busca si la query que se ingresa en la searchbar coincide. devuelve un booleano
+    return titleMatches || categoryMatches; //devuelve un array si coincide un nombre o una categoria (o ambos)
+  }
   );
 
   return(
