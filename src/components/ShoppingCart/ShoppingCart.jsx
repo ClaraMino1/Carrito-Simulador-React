@@ -1,6 +1,6 @@
 import { Collapse, Badge } from "antd";
 import { DeleteOutlined, ShoppingCartOutlined } from '@ant-design/icons';
-import './ShoppingCart.css'; // Asegúrate de que este archivo exista para cualquier estilo CSS personalizado
+import './ShoppingCart.css';
 
 const { Panel } = Collapse;
 
@@ -30,7 +30,7 @@ function ShoppingCart({ cartItems, handleClearCart, handleClearItemCart }) {
               <Badge
                 count={totalItemsInCart} // Usa la cantidad total de items
                 size="small"
-                offset={[-30, -5]} // Ajusta la posición: [x, y]
+                offset={[-30, -5]} //[x, y]
               >
                 <ShoppingCartOutlined style={{ marginRight: 8, fontSize: '18px'}} />
               </Badge>
@@ -72,7 +72,7 @@ function ShoppingCart({ cartItems, handleClearCart, handleClearItemCart }) {
               {total.toLocaleString("es-AR", {
                 style: "currency",
                 currency: "ARS",
-                minimumFractionDigits: 3, //decimales
+                minimumFractionDigits: 2, //decimales
               })}
             </p>
           </>

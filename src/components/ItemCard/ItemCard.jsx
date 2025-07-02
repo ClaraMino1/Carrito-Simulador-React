@@ -1,22 +1,22 @@
 import { Card,Button} from 'antd';
-import './BookCard.css';
+import './ItemCard.css';
 import { ShoppingCartOutlined } from '@ant-design/icons';
 
-function BookCard({title,author,image,price,onAddToCart }){
-
+//le llega un producto de la iteracion
+function ItemCard({product,onAddToCart }){
     return(
-   <Card
+    <Card
         hoverable
         className='card-style'
-        cover={<img className="img-card" alt={title} src={image} />}
+        cover={<img className="img-card" alt={product.title} src={product.image} />}
     >
         <div style={{ marginBottom: 16 }}>
-            <h3>{title}</h3>
-            <p>{author}</p>
-            <p>{price.toLocaleString("es-AR", {
+            <h3>{product.title}</h3>
+            <p>{product.category}</p>
+            <p>{product.price.toLocaleString("es-AR", {
                 style: "currency",
-                currency: "ARS",
-                minimumFractionDigits: 3, // Asegura al menos 3 decimales
+                currency: "USD",
+                minimumFractionDigits: 2, //decimales
               })}</p>
             
         </div>
@@ -25,5 +25,5 @@ function BookCard({title,author,image,price,onAddToCart }){
     </Card>
     );
 }
-export default BookCard;
+export default ItemCard;
 

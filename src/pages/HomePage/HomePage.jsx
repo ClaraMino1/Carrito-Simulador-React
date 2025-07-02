@@ -1,12 +1,12 @@
-import { books } from '../../data/booksData';
 import {Row, Col } from 'antd';
-import BookCard from '../../components/BookCard/BookCard';
+import ItemCard from '../../components/ItemCard/ItemCard';
 import SearcherBar from '../../components/SearchBar/SearchBar';
 import ShoppingCart from '../../components/ShoppingCart/ShoppingCart';
-import React, { useState } from 'react';
+import { useState } from "react";
 import "./HomePage.css"
 
-function HomePage() {
+function HomePage({products}) {
+
     //cartitems = contenido actual del carrito
     const [cartItems, setCartItems] = useState([]); //inicialmente el carrito está vacío
 
@@ -28,12 +28,12 @@ function HomePage() {
 
                 //carrito en la posicion del item duplicado
                 updatedItems[existingItemIndex] = {
-                    //desempaqueta todas las propiedades del objeto del libro existente
+                    //desempaqueta todas las propiedades del objeto del producto existente
                     ...updatedItems[existingItemIndex],
                     //se sobreescribe la cantidad
                     quantity: updatedItems[existingItemIndex].quantity + 1,
                 };
-                return updatedItems; //nuevo array del carrito, que es una copia del array original, pero el libro duplicado ha sido reemplazado por una nueva versión de sí mismo con su cantidad incrementada.
+                return updatedItems; //nuevo array del carrito, que es una copia del array original, pero el producto duplicado se  reemplaza por una nueva versión de sí mismo con su cantidad incrementada.
             } else {
                 // Si el ítem no existe, se agrega con su cantidad
                 return [...currentCartItems, { item: item, quantity: 1 }];
@@ -53,19 +53,18 @@ function HomePage() {
         setCartItems(currentCartItems => {
             //itera el carrito actual
             const updatedItems = currentCartItems.map(cartItem => {
-                // Si encontramos el item que queremos eliminar/decrementar
                 if (cartItem.item.id === itemToRemoveId) {
                     // Si la cantidad es mayor a 1, solo la decrementamos
                     if (cartItem.quantity > 1) {
                         //se sobreescribe la cantidad
                         return { ...cartItem, quantity: cartItem.quantity - 1 };
                     } else {
-                        // Si la cantidad es 1, retornamos null para filtrarlo después
+                        // Si la cantidad es 1, retorna null para filtrarlo después
                         return null;
                     }
                 }
-                return cartItem; // Mantenemos los demás items sin cambios
-            }).filter(Boolean); // Filtramos los `null` para eliminarlos del array
+                return cartItem; // items sin cambios
+            }).filter(Boolean); // filtra los `null` para eliminarlos del array
 
             return updatedItems;
         });
@@ -73,22 +72,24 @@ function HomePage() {
 
     return(
         <div  style={{ padding: 20}}>
-            <h1 style={{ margin: 16 }}>Simulador de carrito de compras</h1>
+            
+            <h1 style={{ margin: 16 }}>Simulador de carrito de compras usando Fake Store API</h1>
+            
+            <SearcherBar products={products} onAddToCart={addToCart}/>
 
-            {/* la searcherBar recibe la simulacion de api como parametro para buscar */}
-            <SearcherBar books={books} onAddToCart={addToCart}/>
             <div style={{display:"flex"}}>
 
                 <Row gutter={[16, 16]} className='grid-container'>
 
-                    {/* por cada libro crea una card */}
-                    {books.map((book,index)=>{
-                    return(
-                        <Col key= {index}  xs={24} sm={12} md={8} lg={8} xl={8}>
-                            <BookCard title={book.title} author={book.author} image={book.image} price={book.price} onAddToCart={() => addToCart(book)}/>
-                        </Col>
-                        )
-                    })}
+                    {/* por cada producto crea una card */}
+                    {products.map((product)=>{
+                    
+                        return(
+                        <Col key= {product.id}  xs={24} sm={12} md={8} lg={8} xl={8}>
+                           <ItemCard product={product} onAddToCart={() => addToCart(product)}/>
+                        </Col>)
+                    
+                    })} 
                 </Row>
 
                 <ShoppingCart cartItems={cartItems} handleClearCart={handleClearCart} handleClearItemCart={handleClearItemCart}/>

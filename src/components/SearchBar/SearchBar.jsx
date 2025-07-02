@@ -6,33 +6,33 @@ import './SearchBar.css';
 
 const { Search } = Input;
 
-const SearcherBar = ({ books, onAddToCart }) => {
+const SearcherBar = ({ products, onAddToCart }) => {
 
   const navigate = useNavigate();
 
   const handleSearch = () => { //se llama al apretar enter o presionar el boton buscar
-    if (filteredBooks.length > 0) { //si hay resultados filtrados(solo toma el primer resultado) entonces redirecciona a la página de detalles con el id del libro filtrado
-      navigate(`/BookDetails/${filteredBooks[0].id}`);
+    if (filteredProducts.length > 0) { //si hay resultados filtrados(solo toma el primer resultado) entonces redirecciona a la página de detalles con el id del producto filtrado
+      navigate(`/ItemDetails/${filteredProducts[0].id}`);
     }
   };
 
-  const handleSelect = (bookId) => {//se llama cuando se hace click en un item de la lista de items que coinciden con la busqueda
-    navigate(`/BookDetails/${bookId}`);
+  const handleSelect = (itemId) => {//se llama cuando se hace click en un item de la lista de items que coinciden con la busqueda
+    navigate(`/ItemDetails/${itemId}`);
     setQuery("");// Limpia el input
   };
 
   //query = lo que el usuario escribe
   const [query, setQuery] = useState('');//inicialmente no hay busqueda 
     
-  const filteredBooks = books.filter((book) => //devuelve un array con los libros filtrados 
-    book.title.toLowerCase().includes(query.toLowerCase())
-    //por cada libro agarra el titulo y busca si la query que se ingresa en la searchbar coincide
+  const filteredProducts = products.filter((product) => //devuelve un array con los productos filtrados 
+    product.title.toLowerCase().includes(query.toLowerCase())
+    //por cada producto agarra el titulo y busca si la query que se ingresa en la searchbar coincide
   );
 
   return(
     <div style={{ maxWidth: 600, margin: 'auto', padding: 20 }}>
       <Search
-        placeholder="Buscar libro"
+        placeholder="Buscar Producto"
         enterButton="Buscar"
         size="large"
         onSearch={handleSearch}//cuando el usuario presiona Enter o el botón
@@ -43,7 +43,7 @@ const SearcherBar = ({ books, onAddToCart }) => {
       {query !== "" ? (// si se escribió algo en la searchbar devuelve los titulos que coinciden
         <List
           bordered
-          dataSource={filteredBooks} //libros que coinciden
+          dataSource={filteredProducts} //productos que coinciden
           // renderItem={(item) => <List.Item>{item.title}</List.Item>}
           renderItem={(item) => {
             return(
