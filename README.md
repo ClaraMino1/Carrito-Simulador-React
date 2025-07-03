@@ -21,9 +21,9 @@ Este proyecto es un **simulador interactivo de carrito de compras** desarrollado
 ## 🛠️ Tecnologías Utilizadas
 
 * **React.js:** Biblioteca principal para la construcción de la interfaz de usuario.
-* **Ant Design:** Un sistema de diseño y librería de componentes UI para React.
-* **React Router DOM:** Para la navegación y el manejo de rutas en la aplicación de una sola página (SPA).
-* **Fake Store API:** API externa utilizada para simular productos de comercio electrónico.
+* **Ant Design:** Librería de componentes UI para React.
+* **React Router DOM:** Para la navegación y el manejo de rutas.
+* **Fake Store API:** API externa utilizada para simular productos.
     * [Documentación de Fake Store API](https://fakestoreapi.com/docs)
 * **HTML & CSS:** Estructura y estilos personalizados.
 
