@@ -36,7 +36,7 @@ function ShoppingCart({ cartItems, handleClearCart, handleClearItemCart }) {
           )}
         </span>
       ),
-      children: ( // No necesitas 'className="panel-cart"' aquí. Esa clase debería ir en el div principal del componente si aplica, o en el mismo Collapse.
+      children: ( 
         <>
           
           {cartItems.length === 0 ? (
